@@ -23,4 +23,6 @@ public class WebpageController {
 	public List<PageVisit> getALlAuthorizations() {
 		return ar.findAll();
 	}
+
+//	@GetMapping("")
 }

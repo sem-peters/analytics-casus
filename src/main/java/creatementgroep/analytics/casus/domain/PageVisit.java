@@ -1,8 +1,6 @@
 package creatementgroep.analytics.casus.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,7 +10,13 @@ public class PageVisit {
 	@GeneratedValue
 	Long id;
 	LocalDateTime stamp;
+	@ManyToOne
+	@JoinColumn(name = "page_id")
 	Webpage page;
+
+	public Webpage getPage() {
+		return page;
+	}
 
 
 	public PageVisit() {
