@@ -12,14 +12,15 @@ public class PageVisit {
 	@GeneratedValue
 	Long id;
 	LocalDateTime stamp;
-	String url;
+	Webpage page;
+
 
 	public PageVisit() {
 	}
 
-	public PageVisit(LocalDateTime stamp, String url) {
+	public PageVisit(LocalDateTime stamp, Webpage page) {
 		this.stamp = stamp;
-		this.url = url;
+		this.page = page;
 	}
 
 	public LocalDateTime getStamp() {
@@ -30,12 +31,12 @@ public class PageVisit {
 		this.stamp = stamp;
 	}
 
-	public String getUrl() {
-		return url;
+	public Webpage getWebpage() {
+		return page;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUrl(Webpage page) {
+		this.page = page;
 	}
 
 	@Override
@@ -43,7 +44,7 @@ public class PageVisit {
 		return "PageVisit{" +
 				"id=" + id +
 				", stamp=" + stamp +
-				", url='" + url + '\'' +
+				", webpage='" + page + '\'' +
 				'}';
 	}
 }
