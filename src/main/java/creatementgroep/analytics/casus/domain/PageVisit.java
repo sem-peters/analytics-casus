@@ -10,6 +10,8 @@ public class PageVisit {
 	@GeneratedValue
 	Long id;
 	LocalDateTime stamp;
+	@ManyToOne
+	@JoinColumn(name = "page_id")
 	Webpage page;
 
 
