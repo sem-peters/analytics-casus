@@ -12,7 +12,6 @@ public class PageVisit {
 	@GeneratedValue
 	Long id;
 	LocalDateTime stamp;
-	Webpage page;
 
 
 	public PageVisit() {
