@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "analytics")
 public class Analytics {
     @Id
     @GeneratedValue
@@ -13,7 +14,7 @@ public class Analytics {
     @Column(name= "timestamp")
     private LocalDateTime timeStamp;
 
-    @OneToMany(mappedBy = "analytics")
+    @ManyToOne
     private Website website;
 
     public Long getId() {

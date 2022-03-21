@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "website")
 public class Website {
     @Id
     @GeneratedValue
@@ -21,7 +22,7 @@ public class Website {
     @Column(name = "websitenaam")
     private String websiteNaam;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "website")
     @JoinColumn(name = "analytics_id", referencedColumnName = "id")
     private Analytics analytics;
 
