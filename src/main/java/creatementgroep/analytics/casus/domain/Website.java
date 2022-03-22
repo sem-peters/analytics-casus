@@ -1,5 +1,7 @@
 package creatementgroep.analytics.casus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +23,7 @@ public class Website {
     @Column(name="trackingId")
     private UUID trackingId;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "page")
     private List<PageVisit> pageVisits;
 

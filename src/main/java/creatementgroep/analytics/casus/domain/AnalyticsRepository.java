@@ -5,10 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+
 public interface AnalyticsRepository  extends JpaRepository<PageVisit, Long> {
 
-	List<PageVisit> findAll();
-	PageVisit save(PageVisit pageVisit);
 
 }

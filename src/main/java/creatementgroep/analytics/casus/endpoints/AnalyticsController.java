@@ -1,14 +1,12 @@
 package creatementgroep.analytics.casus.endpoints;
 
-import creatementgroep.analytics.casus.domain.AnalyticsRepository;
-import creatementgroep.analytics.casus.domain.NewPageVisitData;
 import creatementgroep.analytics.casus.domain.PageVisit;
 import creatementgroep.analytics.casus.domain.Website;
 import creatementgroep.analytics.casus.services.AnalyticsPageService;
 import creatementgroep.analytics.casus.services.WebpageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -23,6 +21,18 @@ public class AnalyticsController {
         this.aps = aps;
         this.wps = wps;
     }
+
+    @GetMapping("/analytics")
+    public String pageVisits (@RequestParam Long id,Model model) {
+        Website website = wps.findById(id);
+        model.addAttribute("pagevisits", website.getPageVisits());
+        return "pagevisits";
+    }
+
+//    public String webpages( Model model){
+//        List<Website> allWebsites = wps.findAll();
+//        model.addAttribute("webpages", allWebsites);
+//        return "webpages";
 
     @GetMapping("/track")
     @ResponseStatus(HttpStatus.NO_CONTENT)

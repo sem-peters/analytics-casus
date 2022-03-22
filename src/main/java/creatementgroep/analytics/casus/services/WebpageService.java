@@ -4,6 +4,7 @@ import creatementgroep.analytics.casus.domain.WebpageRepository;
 import creatementgroep.analytics.casus.domain.Website;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -18,4 +19,11 @@ public class WebpageService {
 		return wr.findByTrackingId(UUID.fromString(trackingId));
 	}
 
+	public List<Website> findAll() {
+		return wr.findAll();
+	}
+
+	public Website findById(Long id) {
+		return wr.getById(id);
+	}
 }
