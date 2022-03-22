@@ -2,30 +2,38 @@ package creatementgroep.analytics.casus.domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
+@Table(name="Analytics")
 public class PageVisit {
 
-	@Id
+
+	@Column(name="id")
 	@GeneratedValue
 	Long id;
 	LocalDateTime stamp;
-	@ManyToOne
-	@JoinColumn(name = "page_id")
-	Webpage page;
+	@Id
+	private UUID trackingId;
+
+	@ManyToOne()
+	@JoinColumn(name = "webpage")
+	private Webpage page;
 
 
-	public Webpage getPage() {
-		return page;
+	public UUID getTrackingId( ) {
+		return trackingId;
 	}
 
-
+	public void setTrackingId( UUID trackingId ) {
+		this.trackingId = trackingId;
+	}
 	public PageVisit() {
 	}
 
-	public PageVisit(LocalDateTime stamp, Webpage page) {
+	public PageVisit(LocalDateTime stamp, UUID trackingId) {
 		this.stamp = stamp;
-		this.page = page;
+		this.trackingId = trackingId;
 	}
 
 	public LocalDateTime getStamp() {
@@ -36,20 +44,13 @@ public class PageVisit {
 		this.stamp = stamp;
 	}
 
-	public Webpage getWebpage() {
-		return page;
-	}
-
-	public void setUrl(Webpage page) {
-		this.page = page;
-	}
 
 	@Override
 	public String toString() {
 		return "PageVisit{" +
 				"id=" + id +
 				", stamp=" + stamp +
-				", webpage='" + page + '\'' +
+				", webpage='" + trackingId + '\'' +
 				'}';
 	}
 }

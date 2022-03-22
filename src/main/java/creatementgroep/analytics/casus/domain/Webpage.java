@@ -1,18 +1,37 @@
 package creatementgroep.analytics.casus.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(name="Website")
 public class Webpage {
+
+    public Long getId( ) {
+        return id;
+    }
+
+    public void setId( Long id ) {
+        this.id = id;
+    }
 
     @GeneratedValue
     @Id
-    private long id;
+    @Column(name="id")
+    private Long id;
+
+    @Column(name="websitenaam")
     private String name;
-    private UUID trackingId = UUID.randomUUID();
+
+
+    @Column(name="trackingId")
+    private UUID trackingId;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @MapsId
+    @JoinColumn(name = "trackingId", referencedColumnName = "webpage")
+    private List<PageVisit> pageVists;
 
     public Webpage() {
     }
