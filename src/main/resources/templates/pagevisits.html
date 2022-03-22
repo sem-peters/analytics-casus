@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Webpagina-analysemodel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Websitename</th>
+        <th>Timestamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pagevisit : ${pagevisits}">
+        <td><span th:text="${pagevisit.page.name}"> </span></td>
+        <td><span th:text="${pagevisit.timestamp}"> </span></td>
+        <!--        <td><span th:text="${pagevisit.timestamp}"> Pagevisits </span></td>-->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

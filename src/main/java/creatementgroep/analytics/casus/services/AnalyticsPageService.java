@@ -20,4 +20,10 @@ public class AnalyticsPageService {
 	public void savePageVisit( PageVisit pageVisit ) {
 		ar.save(pageVisit);
 	}
+
+	public List<PageVisit> findAll() {
+		return ar.findAll();
+	}
+
+
 }

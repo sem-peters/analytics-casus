@@ -16,6 +16,8 @@ public class PageVisit {
 	LocalDateTime timestamp;
 
 
+
+
 	@ManyToOne
 	@JoinColumn(name = "webpage")
 	private Website page;
@@ -28,14 +30,17 @@ public class PageVisit {
 	public PageVisit() {
 	}
 
-	public LocalDateTime getTimeStamp() {
+	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimeStamp(LocalDateTime timestamp) {
+	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 
+	public Website getPage() {
+		return page;
+	}
 
 	@Override
 	public String toString() {

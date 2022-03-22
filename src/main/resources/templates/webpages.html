@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Webpagina-analysemodel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Websitename</th>
+        <th>Tracking-Id</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="website : ${webpages}">
+        <td><span th:text="${website.id}"> WebsiteId </span></td>
+        <td><a th:href="@{/analytics(id=${website.id})}"><span th:text="${website.name}"> Websitename </span></a></td>
+        <td><span th:text="${website.trackingId}"> TrackingId </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

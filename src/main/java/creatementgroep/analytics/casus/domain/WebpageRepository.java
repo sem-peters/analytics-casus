@@ -11,4 +11,6 @@ public interface WebpageRepository extends JpaRepository<Website, Long> {
 
 	Website findByTrackingId(UUID trackingId);
 
+	Website findByName(String name);
+
 }
