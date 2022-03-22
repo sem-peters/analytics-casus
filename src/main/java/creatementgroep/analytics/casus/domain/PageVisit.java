@@ -5,43 +5,35 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name="Analytics")
+@Table(name="analytics")
 public class PageVisit {
 
 
-	@Column(name="id")
+
+	@Id
 	@GeneratedValue
 	Long id;
-	LocalDateTime stamp;
-	@Id
-	private UUID trackingId;
+	LocalDateTime timestamp;
 
-	@ManyToOne()
+
+	@ManyToOne
 	@JoinColumn(name = "webpage")
-	private Webpage page;
+	private Website page;
 
-
-	public UUID getTrackingId( ) {
-		return trackingId;
+	public PageVisit(LocalDateTime timestamp, Website page) {
+		this.timestamp = timestamp;
+		this.page = page;
 	}
 
-	public void setTrackingId( UUID trackingId ) {
-		this.trackingId = trackingId;
-	}
 	public PageVisit() {
 	}
 
-	public PageVisit(LocalDateTime stamp, UUID trackingId) {
-		this.stamp = stamp;
-		this.trackingId = trackingId;
+	public LocalDateTime getTimeStamp() {
+		return timestamp;
 	}
 
-	public LocalDateTime getStamp() {
-		return stamp;
-	}
-
-	public void setStamp(LocalDateTime stamp) {
-		this.stamp = stamp;
+	public void setTimeStamp(LocalDateTime timestamp) {
+		this.timestamp = timestamp;
 	}
 
 
@@ -49,8 +41,8 @@ public class PageVisit {
 	public String toString() {
 		return "PageVisit{" +
 				"id=" + id +
-				", stamp=" + stamp +
-				", webpage='" + trackingId + '\'' +
+				", stamp=" + timestamp +
+				", webpage='" + '\'' +
 				'}';
 	}
 }

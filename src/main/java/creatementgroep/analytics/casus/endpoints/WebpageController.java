@@ -2,7 +2,7 @@ package creatementgroep.analytics.casus.endpoints;
 
 import creatementgroep.analytics.casus.domain.AnalyticsRepository;
 import creatementgroep.analytics.casus.domain.PageVisit;
-import creatementgroep.analytics.casus.domain.Webpage;
+import creatementgroep.analytics.casus.domain.Website;
 import creatementgroep.analytics.casus.domain.WebpageRepository;
 import creatementgroep.analytics.casus.services.AnalyticsPageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +31,6 @@ public class WebpageController {
 	}
 
 	@GetMapping("/webpages")
-	public List<Webpage> getAllWebpages() {
+	public List<Website> getAllWebpages() {
 		return wr.findAll();
 	}}

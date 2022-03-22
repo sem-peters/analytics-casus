@@ -5,16 +5,9 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name="Website")
-public class Webpage {
+public class Website {
 
-    public Long getId( ) {
-        return id;
-    }
 
-    public void setId( Long id ) {
-        this.id = id;
-    }
 
     @GeneratedValue
     @Id
@@ -28,15 +21,13 @@ public class Webpage {
     @Column(name="trackingId")
     private UUID trackingId;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @MapsId
-    @JoinColumn(name = "trackingId", referencedColumnName = "webpage")
-    private List<PageVisit> pageVists;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "page")
+    private List<PageVisit> pageVisits;
 
-    public Webpage() {
+    public Website() {
     }
 
-    public Webpage(String name, UUID trackingId) {
+    public Website(String name, UUID trackingId) {
         this.name = name;
         this.trackingId = trackingId;
     }
@@ -57,5 +48,19 @@ public class Webpage {
         this.trackingId = trackingId;
     }
 
+    public Long getId( ) {
+        return id;
+    }
+
+    public void setId( Long id ) {
+        this.id = id;
+    }
+    public List<PageVisit> getPageVisits() {
+        return pageVisits;
+    }
+
+    public void setPageVisits(List<PageVisit> pageVisits) {
+        this.pageVisits = pageVisits;
+    }
 
 }

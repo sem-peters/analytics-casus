@@ -3,26 +3,32 @@ package creatementgroep.analytics.casus.endpoints;
 import creatementgroep.analytics.casus.domain.AnalyticsRepository;
 import creatementgroep.analytics.casus.domain.NewPageVisitData;
 import creatementgroep.analytics.casus.domain.PageVisit;
+import creatementgroep.analytics.casus.domain.Website;
 import creatementgroep.analytics.casus.services.AnalyticsPageService;
+import creatementgroep.analytics.casus.services.WebpageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+import java.time.LocalDateTime;
+
+@Controller
 public class AnalyticsController {
 
-    public AnalyticsPageService aps;
+    private AnalyticsPageService aps;
+    private WebpageService wps;
 
-    @Autowired
-    public AnalyticsController(AnalyticsPageService aps) {
+    public AnalyticsController(AnalyticsPageService aps, WebpageService wps) {
         this.aps = aps;
+        this.wps = wps;
     }
 
-    @PostMapping("/track")
-    public void createPageVisit( NewPageVisitData newPageVisitData ) {
-
-        PageVisit pageVisit = new PageVisit(newPageVisitData.getTimestamp(), newPageVisitData.getTrackingId());
+    @GetMapping("/track")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void createPageVisit(@RequestParam String trackingId ) {
+        Website website = wps.findByTrackingId(trackingId);
+        PageVisit pageVisit = new PageVisit(LocalDateTime.now(), website );
         aps.savePageVisit(pageVisit);
     }
 
