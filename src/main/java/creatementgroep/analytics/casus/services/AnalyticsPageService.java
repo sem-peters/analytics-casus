@@ -17,4 +17,7 @@ public class AnalyticsPageService {
 		this.ar = ar;
 	}
 
+	public void savePageVisit( PageVisit pageVisit ) {
+		ar.save(pageVisit);
+	}
 }
