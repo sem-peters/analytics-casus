@@ -20,6 +20,7 @@
         <td><a th:href="@{/analytics(id=${website.id})}"><span th:text="${website.name}"> Websitename </span></a></td>
         <td><span th:text="${website.trackingId}"> TrackingId </span></td>
         <td><span th:text="${website.getPageVisits().size()}"> Visit Count </span></td>
+        <td><a th:href="@{/track(trackingId=${website.trackingId})}"><span> Track </span></a></td>
     </tr>
     </tbody>
 </table>
