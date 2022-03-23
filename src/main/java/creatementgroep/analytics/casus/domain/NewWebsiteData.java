@@ -1,5 +1,6 @@
 package creatementgroep.analytics.casus.domain;
 
+import javax.persistence.Column;
 import java.util.UUID;
 
 public class NewWebsiteData {
@@ -9,6 +10,7 @@ public class NewWebsiteData {
 	public NewWebsiteData(String name) {
 		this.name = name;
 	}
+
 
 	public NewWebsiteData() {
 	}
