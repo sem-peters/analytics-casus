@@ -10,9 +10,7 @@ import creatementgroep.analytics.casus.services.WebpageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +32,15 @@ private WebpageService wps;
 		List<Website> allWebsites = wps.findAll();
 		model.addAttribute("webpages", allWebsites);
 		return "webpages";
+	}
+
+
+	@PostMapping("/webpages")
+		public void addWebsite(@RequestBody Website newWebSiteData){
+		Website newWebsite = new Website(
+				newWebSiteData.getName(),
+				newWebSiteData.getTrackingId()
+		);
+		wps.save(newWebsite);
 	}
 }

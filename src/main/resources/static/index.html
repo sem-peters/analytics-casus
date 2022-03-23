@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Analytics webapp</title>
+    <title>Website Service</title>
 </head>
 <body>
-    <h1 align="center" > Welcome </h1>
-</body>
+<h1>Add your new website here!</h1>
+<div>
+
+    <p><label for="name">Website</label>
+        <input id="name"></p>
+
+    <button id="submitButton">Submit</button>
+</div>
+<script language="javascript">
+function submitForm() {
+// Create an object that matches the structure of NewUserData
+    let newWebsiteData = {
+        //id
+        name: document.getElementById('name').value,
+        //uuid
+    };
+    console.log('Sending', newWebsiteData);
+// Build an HTTP request ( the hard way )
+// In a front-end framework, there are easier ways to
+// do this
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/webpages');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        alert('The website was created');
+    };
+    xhr.send(JSON.stringify(newWebsiteData));
+}
+document.getElementById('submitButton').addEventListener('click', submitForm);
+</script></body>
 </html>

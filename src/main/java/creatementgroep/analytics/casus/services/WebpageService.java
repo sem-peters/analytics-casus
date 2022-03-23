@@ -26,4 +26,7 @@ public class WebpageService {
 	public Website findById(Long id) {
 		return wr.getById(id);
 	}
+
+	public void save(Website website) {
+	}
 }
