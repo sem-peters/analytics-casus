@@ -11,6 +11,7 @@
         <th>Id</th>
         <th>Websitename</th>
         <th>Tracking-Id</th>
+        <th>Visit count</th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
         <td><span th:text="${website.id}"> WebsiteId </span></td>
         <td><a th:href="@{/analytics(id=${website.id})}"><span th:text="${website.name}"> Websitename </span></a></td>
         <td><span th:text="${website.trackingId}"> TrackingId </span></td>
+        <td><span th:text="${website.getPageVisits().size()}"> Visit Count </span></td>
     </tr>
     </tbody>
 </table>
