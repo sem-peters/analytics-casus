@@ -1,10 +1,7 @@
 package creatementgroep.analytics.casus.endpoints;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import creatementgroep.analytics.casus.domain.AnalyticsRepository;
-import creatementgroep.analytics.casus.domain.PageVisit;
-import creatementgroep.analytics.casus.domain.Website;
-import creatementgroep.analytics.casus.domain.WebpageRepository;
+import creatementgroep.analytics.casus.domain.*;
 import creatementgroep.analytics.casus.services.AnalyticsPageService;
 import creatementgroep.analytics.casus.services.WebpageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +33,7 @@ private WebpageService wps;
 
 
 	@PostMapping("/webpages")
-		public void addWebsite(@RequestBody Website newWebSiteData){
-		Website newWebsite = new Website(
-				newWebSiteData.getName(),
-				newWebSiteData.getTrackingId()
-		);
-		wps.save(newWebsite);
+		public void createNewWebsite(@RequestBody NewWebsiteData newWebsiteData){
+		wps.save(newWebsiteData);
 	}
 }

@@ -5,11 +5,12 @@ import java.util.UUID;
 public class NewWebsiteData {
 
 	private String name;
-	private UUID trackinId = UUID.randomUUID();
 
-	public NewWebsiteData(String name, UUID trackinId) {
+	public NewWebsiteData(String name) {
 		this.name = name;
-		this.trackinId = trackinId;
+	}
+
+	public NewWebsiteData() {
 	}
 
 	public String getName() {
@@ -18,13 +19,5 @@ public class NewWebsiteData {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public UUID getTrackinId() {
-		return trackinId;
-	}
-
-	public void setTrackinId(UUID trackinId) {
-		this.trackinId = trackinId;
 	}
 }
