@@ -16,13 +16,9 @@ public class WebpageController {
 
 private WebpageService wps;
 
-
 	public WebpageController(WebpageService wps) {
 	this.wps = wps;
 	}
-
-
-
 
 	@GetMapping("/webpages")
 	public String webpages( Model model){
@@ -30,7 +26,6 @@ private WebpageService wps;
 		model.addAttribute("webpages", allWebsites);
 		return "webpages";
 	}
-
 
 	@PostMapping("/webpages")
 		public void createNewWebsite(@RequestBody NewWebsiteData newWebsiteData){

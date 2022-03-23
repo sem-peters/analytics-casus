@@ -14,7 +14,7 @@ public class Website {
     @Column(name="id")
     private Long id;
 
-    @Column(name="websitenaam")
+    @Column(name="websitenaam", unique = true)
     private String name;
 
     @Column(name="trackingId")

@@ -3,7 +3,6 @@
     <title>Website Service</title>
 </head>
 <body>
-
 <h1>Add your new website here!</h1>
 <div>
 
@@ -22,20 +21,35 @@ function submitForm() {
 // Build an HTTP request ( the hard way )
 // In a front-end framework, there are easier ways to
 // do this
-    let xhr = new XMLHttpRequest();
+
+   let xhr = new XMLHttpRequest();
     xhr.open('POST', '/webpages');
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function() {
-        alert('The website was created');
-    };
+    xhr.addEventListener('load', () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert('The website was created');
+             location.href = 'http://localhost:8080/webpages';
+        } else {
+            alert('Website is not created');
+            location.href = 'http://localhost:8080/index.html';
+        }
+
+
+    });
     xhr.send(JSON.stringify(newWebsiteData));
+
+
+
+
+
+
+
 }
 document.getElementById('submitButton').addEventListener('click', submitForm);
 </script>
-    <ul align="center" >
-        <li><a href="/analytics.csv">Analytics.csv</a></li>
-        <li><a href="/webpages"> Webpages</a></li>
-    </ul>
+
 </body>
 
+
+</script></body>
 </html>
