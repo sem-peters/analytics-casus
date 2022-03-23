@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 @Controller
@@ -41,6 +43,14 @@ public class AnalyticsController {
         PageVisit pageVisit = new PageVisit(LocalDateTime.now(), website );
         aps.savePageVisit(pageVisit);
     }
+
+    @RequestMapping(path="/analytics.csv")
+    public void getAllPageVisitsInCSV(HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition","attachment; filename=\"pagevisit-analytics.csv\"");
+        aps.writePageVisitsToCSV(servletResponse.getWriter());
+    }
+
 
 
 }
