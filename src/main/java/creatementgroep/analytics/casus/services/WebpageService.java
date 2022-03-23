@@ -1,5 +1,6 @@
 package creatementgroep.analytics.casus.services;
 
+import creatementgroep.analytics.casus.domain.NewWebsiteData;
 import creatementgroep.analytics.casus.domain.WebpageRepository;
 import creatementgroep.analytics.casus.domain.Website;
 import org.springframework.stereotype.Service;
@@ -26,4 +27,11 @@ public class WebpageService {
 	public Website findById(Long id) {
 		return wr.getById(id);
 	}
+
+
+	public void save(NewWebsiteData newWebsiteData) {
+		Website website = new Website(newWebsiteData.getName(), UUID.randomUUID());
+		wr.save(website);
+	}
+
 }

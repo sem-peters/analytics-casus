@@ -9,8 +9,6 @@ import java.util.UUID;
 @Entity
 public class Website {
 
-
-
     @GeneratedValue
     @Id
     @Column(name="id")
@@ -18,7 +16,6 @@ public class Website {
 
     @Column(name="websitenaam")
     private String name;
-
 
     @Column(name="trackingId")
     private UUID trackingId;
