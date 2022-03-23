@@ -59,6 +59,7 @@ public class Website {
         return pageVisits;
     }
 
+
     public void setPageVisits(List<PageVisit> pageVisits) {
         this.pageVisits = pageVisits;
     }

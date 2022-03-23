@@ -31,6 +31,8 @@ public class AnalyticsController {
         return "pagevisits";
     }
 
+
+
 //    public String webpages( Model model){
 //        List<Website> allWebsites = wps.findAll();
 //        model.addAttribute("webpages", allWebsites);
