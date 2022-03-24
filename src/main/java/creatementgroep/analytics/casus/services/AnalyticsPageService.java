@@ -2,9 +2,9 @@ package creatementgroep.analytics.casus.services;
 
 import creatementgroep.analytics.casus.domain.AnalyticsRepository;
 import creatementgroep.analytics.casus.domain.PageVisit;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua_parser.Client;
 import ua_parser.Parser;
@@ -14,15 +14,11 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class AnalyticsPageService {
 
-
-	private AnalyticsRepository ar;
-
-	public AnalyticsPageService(AnalyticsRepository ar) {
-		this.ar = ar;
-	}
+	private final AnalyticsRepository analyticsRepository;
 
 	public void savePageVisit(PageVisit pageVisit, String userAgent, String ipAddress) {
 		Parser uaParser = new Parser();
@@ -33,11 +29,11 @@ public class AnalyticsPageService {
 
 		pageVisit.setInternetProtocol(ipAddress);
 
-		ar.save(pageVisit);
+		analyticsRepository.save(pageVisit);
 	}
 
 	public List<PageVisit> findAll() {
-		return ar.findAll();
+		return analyticsRepository.findAll();
 	}
 
 	public void writePageVisitsToCSV(Writer writer) {

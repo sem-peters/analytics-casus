@@ -1,14 +1,19 @@
 package creatementgroep.analytics.casus.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
 @Table(name="analytics")
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 public class PageVisit {
-
-
 
 	@Id
 	@GeneratedValue
@@ -29,52 +34,6 @@ public class PageVisit {
 		this.page = page;
 	}
 
-	public PageVisit() {
-	}
-
-	public LocalDateTime getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(LocalDateTime timestamp) {
-		this.timestamp = timestamp;
-	}
-
-	public Website getPage() {
-		return page;
-	}
-
-	public String getBrowserName() {
-		return browserName;
-	}
-
-	public void setBrowserName(String browserName) {
-		this.browserName = browserName;
-	}
-
-	public String getDeviceName() {
-		return deviceName;
-	}
-
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
-	}
-
-	public String getOperatingSystem() {
-		return operatingSystem;
-	}
-
-	public void setOperatingSystem(String operatingSystem) {
-		this.operatingSystem = operatingSystem;
-	}
-
-	public String getInternetProtocol() {
-		return internetProtocol;
-	}
-
-	public void setInternetProtocol(String internetProtocol) {
-		this.internetProtocol = internetProtocol;
-	}
 
 	@Override
 	public String toString() {
