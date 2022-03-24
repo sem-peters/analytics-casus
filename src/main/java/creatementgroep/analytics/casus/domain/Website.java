@@ -14,9 +14,9 @@ import java.util.UUID;
 public class Website {
 
 
-    @GeneratedValue
     @Id
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "website_generator")
+    @SequenceGenerator(name="website_generator", sequenceName = "website_seq")
     private Long id;
 
 
