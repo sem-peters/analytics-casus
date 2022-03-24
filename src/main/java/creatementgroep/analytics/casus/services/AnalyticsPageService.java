@@ -2,6 +2,8 @@ package creatementgroep.analytics.casus.services;
 
 import creatementgroep.analytics.casus.domain.AnalyticsRepository;
 import creatementgroep.analytics.casus.domain.PageVisit;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +13,16 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class AnalyticsPageService {
 
 
-	private AnalyticsRepository ar;
+	private final AnalyticsRepository ar;
 
-	public AnalyticsPageService(AnalyticsRepository ar) {
-		this.ar = ar;
-	}
+//	public AnalyticsPageService(AnalyticsRepository ar) {
+//		this.ar = ar;
+//	}
 
 	public void savePageVisit( PageVisit pageVisit ) {
 		ar.save(pageVisit);
