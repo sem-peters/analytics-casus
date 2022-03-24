@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.stereotype.Service;
+import ua_parser.Client;
+import ua_parser.Parser;
+import ua_parser.UserAgent;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -17,7 +20,15 @@ public class AnalyticsPageService {
 
 	private final AnalyticsRepository analyticsRepository;
 
-	public void savePageVisit( PageVisit pageVisit ) {
+	public void savePageVisit(PageVisit pageVisit, String userAgent, String ipAddress) {
+		Parser uaParser = new Parser();
+		Client c = uaParser.parse(userAgent);
+		pageVisit.setBrowserName(c.userAgent.family);
+		pageVisit.setDeviceName(c.device.family);
+		pageVisit.setOperatingSystem(c.os.family);
+
+		pageVisit.setInternetProtocol(ipAddress);
+
 		analyticsRepository.save(pageVisit);
 	}
 

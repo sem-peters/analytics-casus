@@ -9,7 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua_parser.Client;
+import ua_parser.Parser;
+import ua_parser.UserAgent;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -30,10 +34,11 @@ public class AnalyticsController {
 
     @GetMapping("/track")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void createPageVisit(@RequestParam String trackingId ) {
+    public void createPageVisit(@RequestParam String trackingId, @RequestHeader(value = "User-Agent") String userAgent, HttpServletRequest httpServletRequest) {
         Website website = webpageService.findByTrackingId(trackingId);
-        PageVisit pageVisit = new PageVisit(LocalDateTime.now(), website );
-        analyticsPageService.savePageVisit(pageVisit);
+        PageVisit pageVisit = new PageVisit(LocalDateTime.now(), website);
+        String ipAddress = httpServletRequest.getRemoteAddr();
+        analyticsPageService.savePageVisit(pageVisit, userAgent, ipAddress);
     }
 
     @RequestMapping(path="/analytics.csv")

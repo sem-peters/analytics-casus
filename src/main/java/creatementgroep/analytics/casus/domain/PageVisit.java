@@ -24,17 +24,26 @@ public class PageVisit {
 	@JoinColumn(name = "webpage")
 	private Website page;
 
+	private String browserName;
+	private String deviceName;
+	private String operatingSystem;
+	private String internetProtocol;
+
 	public PageVisit(LocalDateTime timestamp, Website page) {
 		this.timestamp = timestamp;
 		this.page = page;
 	}
 
+
 	@Override
 	public String toString() {
 		return "PageVisit{" +
-				"id=" + id +
-				", stamp=" + timestamp.format(DateTimeFormatter.ISO_DATE_TIME) +
-				", webpage='" + page.getName() +
+				"timestamp=" + timestamp +
+				", page=" + page +
+				", browserName='" + browserName + '\'' +
+				", deviceName='" + deviceName + '\'' +
+				", operatingSystem='" + operatingSystem + '\'' +
+				", internetProtocol='" + internetProtocol + '\'' +
 				'}';
 	}
 }
