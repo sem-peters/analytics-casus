@@ -1,16 +1,23 @@
 <html>
 <head>
+    <link rel="stylesheet" href="styles.css">
     <title>Website Service</title>
 </head>
 <body>
 <h1>Add your new website here!</h1>
 <div>
 
-    <p><label for="name">Website</label>
-        <input id="name"></p>
+    <p>
+        <label for="name">Website</label>
+        <input id="name">
+        <button id="submitButton">Submit</button>
+    </p>
 
-    <button id="submitButton">Submit</button>
+
 </div>
+
+<a href="/analytics.csv">Analytics.csv</a><a href="/webpages"> Webpages</a>
+
 <script language="javascript">
 function submitForm() {
 // Create an object that matches the structure of NewUserData
@@ -47,7 +54,6 @@ function submitForm() {
 }
 document.getElementById('submitButton').addEventListener('click', submitForm);
 </script>
-<h1> Hallo wereld </h1>
-<ul align="center" >         <li><a href="/analytics.csv">Analytics.csv</a></li>         <li><a href="/webpages"> Webpages</a></li>     </ul>
+
 </body>
 </html>
