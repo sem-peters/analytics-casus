@@ -10,13 +10,21 @@
     <tr>
         <th>Websitename</th>
         <th>Timestamp</th>
+        <th>Browser name</th>
+        <th>Device Name</th>
+        <th>OS</th>
+        <th>IP Address</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="pagevisit : ${pagevisits}">
         <td><span th:text="${pagevisit.page.name}"> </span></td>
         <td><span th:text="${pagevisit.timestamp}"> </span></td>
-        <!--        <td><span th:text="${pagevisit.timestamp}"> Pagevisits </span></td>-->
+        <td><span th:text="${pagevisit.browserName}"> </span></td>
+        <td><span th:text="${pagevisit.deviceName}"> </span></td>
+        <td><span th:text="${pagevisit.operatingSystem}"> </span></td>
+        <td><span th:text="${pagevisit.internetProtocol}"> </span></td>
+
     </tr>
     </tbody>
 </table>

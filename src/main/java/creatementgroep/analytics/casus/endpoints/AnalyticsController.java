@@ -8,7 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua_parser.Client;
+import ua_parser.Parser;
+import ua_parser.UserAgent;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -31,19 +35,13 @@ public class AnalyticsController {
         return "pagevisits";
     }
 
-
-
-//    public String webpages( Model model){
-//        List<Website> allWebsites = wps.findAll();
-//        model.addAttribute("webpages", allWebsites);
-//        return "webpages";
-
     @GetMapping("/track")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void createPageVisit(@RequestParam String trackingId ) {
+    public void createPageVisit(@RequestParam String trackingId, @RequestHeader(value = "User-Agent") String userAgent, HttpServletRequest httpServletRequest) {
         Website website = wps.findByTrackingId(trackingId);
-        PageVisit pageVisit = new PageVisit(LocalDateTime.now(), website );
-        aps.savePageVisit(pageVisit);
+        PageVisit pageVisit = new PageVisit(LocalDateTime.now(), website);
+        String ipAddress = httpServletRequest.getRemoteAddr();
+        aps.savePageVisit(pageVisit, userAgent, ipAddress);
     }
 
     @RequestMapping(path="/analytics.csv")
