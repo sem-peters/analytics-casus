@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Webpagina-analysemodel</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
+
 <div align="center">
     <h1>Add your new website here!</h1>
 
@@ -33,8 +34,11 @@
     </tr>
     </tbody>
 </table>
-
-
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out">
+    </form>
+</div>
 
 
 <script language="javascript">
