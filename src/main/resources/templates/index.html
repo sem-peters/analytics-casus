@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Website Service</title>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1> Hallo wereld </h1>
+<ul align="center" >
+    <li><a href="/analytics.csv">Analytics.csv</a></li>
+    <li><a href="/webpages"> Webpages</a></li>
+
+</ul>
+
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out">
+    </form>
+</div>
+<div sec:authorize="isAnonymous()">
+    <form th:action="@{/login}" method="get">
+        <input type="submit" value="Sign In">
+    </form>
+</div>
+</body>
+</html>
