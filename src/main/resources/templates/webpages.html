@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
-    <link rel="stylesheet" href="styles.css">
     <title>Webpagina-analysemodel</title>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -15,7 +17,7 @@
 
     <button id="submitButton">Submit</button>
 </div>
-<table>
+<table class="tabel">
     <thead>
     <tr>
         <th>Id</th>
@@ -63,7 +65,7 @@ function submitForm() {
              location.href = 'http://localhost:8080/webpages';
         } else {
             alert('Website is not created');
-            location.href = 'http://localhost:8080/index.html';
+            location.href = 'http://localhost:8080/index';
         }
 
 
