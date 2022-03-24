@@ -14,7 +14,8 @@ import java.util.UUID;
 public class PageVisit {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pageVisit_generator")
+	@SequenceGenerator(name="pageVisit_generator", sequenceName = "pageVisit_seq")
 	Long id;
 	LocalDateTime timestamp;
 
