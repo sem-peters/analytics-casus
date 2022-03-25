@@ -30,9 +30,19 @@ public class WebpageService {
 		return webpageRepository.getById(id);
 	}
 
-	public void save(NewWebsiteData newWebsiteData, User user) {
-		Website website = new Website(newWebsiteData.getName(), UUID.randomUUID(),user );
+	public void save(NewWebsiteData newWebsiteData) {
+		Website website;
+		if(newWebsiteData.getUrl() != null) {
+			website = new Website(newWebsiteData.getName(), UUID.randomUUID(), newWebsiteData.getUrl());
+		} else {
+			website = new Website(newWebsiteData.getName(), UUID.randomUUID());
+		}
+
 		webpageRepository.save(website);
+	}
+
+	public List<Website> findAllByUrl() {
+		return webpageRepository.findAllByUrl();
 	}
 
 }

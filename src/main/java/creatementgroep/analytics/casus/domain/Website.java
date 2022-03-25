@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +32,15 @@ public class Website {
     @JoinTable
     private List<User> users;
 
+    @Column
+    private String url;
+
+    @Column
+    private String status;
+
+    @Column
+    private LocalDateTime lastChecked;
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "page")
     private List<PageVisit> pageVisits = List.of();
@@ -42,4 +52,9 @@ public class Website {
         this.users = List.of(user);
     }
 
+    public Website(String name, UUID trackingId, String url) {
+        this.name = name;
+        this.trackingId = trackingId;
+        this.url = url;
+    }
 }
