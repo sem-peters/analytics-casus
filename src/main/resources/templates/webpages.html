@@ -12,10 +12,13 @@
 <div align="center">
     <h1>Add your new website here!</h1>
 
-    <p><label for="name">Website</label>
-        <input id="name"></p>
+    <p>
+        <label required for="name">Website</label><input id="name">
+        <label for="url">Optional URL</label><input id="url">
+        <button id="submitButton">Submit</button>
+    </p>
 
-    <button id="submitButton">Submit</button>
+
 </div>
 <table class="tabel">
     <thead>
@@ -24,7 +27,9 @@
         <th>Websitename</th>
         <th>Tracking-Id</th>
         <th>Visit count</th>
+        <th>URL</th>
         <th>Track</th>
+
     </tr>
     </thead>
     <tbody>
@@ -33,7 +38,9 @@
         <td><a th:href="@{/analytics(id=${website.id})}"><span th:text="${website.name}"> Websitename </span></a></td>
         <td><span th:text="${website.trackingId}"> TrackingId </span></td>
         <td><span th:text="${website.getPageVisits().size()}"> Visit Count </span></td>
+        <td><span th:text="${website.getUrl()}"> URL(Optional) </span></td>
         <td><a th:href="@{/track(trackingId=${website.trackingId})}"><span> Track </span></a></td>
+
     </tr>
     </tbody>
 </table>
@@ -44,12 +51,12 @@
     </form>
 </div>
 
-
 <script language="javascript">
 function submitForm() {
 // Create an object that matches the structure of NewUserData
     let newWebsiteData = {
         name: document.getElementById('name').value,
+        url: document.getElementById('url').value
      };
     console.log('Sending', newWebsiteData);
 // Build an HTTP request ( the hard way )
@@ -65,7 +72,7 @@ function submitForm() {
              location.href = 'http://localhost:8080/webpages';
         } else {
             alert('Website is not created');
-            location.href = 'http://localhost:8080/index';
+            location.href = 'http://localhost:8080/index.html';
         }
 
 
@@ -73,14 +80,9 @@ function submitForm() {
     xhr.send(JSON.stringify(newWebsiteData));
 
 
-
-
-
-
-
 }
 document.getElementById('submitButton').addEventListener('click', submitForm);
-
 </script>
+
 </body>
 </html>
