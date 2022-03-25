@@ -15,20 +15,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WebpageController {
 
-private final WebpageService webpageService;
-private SecurityContext securityContext;
+    private final WebpageService webpageService;
 
-	@GetMapping("/webpages")
-	public String webpages(@AuthenticationPrincipal User user, Model model){
-		List<Website> allWebsites = webpageService.findAllByUser(user);
-		model.addAttribute("webpages", allWebsites);
-		System.out.printf("%d: %s, %s", user.getId(), user.getUsername(), user.getPassword());
-		return "webpages";
-	}
+    @GetMapping("/webpages")
+    public String webpages(@AuthenticationPrincipal User user, Model model) {
+        List<Website> allWebsites = webpageService.findAllByUser(user);
+        model.addAttribute("webpages", allWebsites);
+        return "webpages";
+    }
 
-	@PostMapping("/webpages")
-		public void createNewWebsite(@AuthenticationPrincipal User user,@RequestBody NewWebsiteData newWebsiteData){
-		webpageService.save(newWebsiteData, user);
+    @PostMapping("/webpages")
+    public void createNewWebsite(@AuthenticationPrincipal User user, @RequestBody NewWebsiteData newWebsiteData) {
+        webpageService.save(newWebsiteData, user);
 
-	}
+    }
 }
