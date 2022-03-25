@@ -40,4 +40,6 @@ public class AvailabilityController {
 		return webpageService.findAllByUrl();
 	}
 
+
+
 }

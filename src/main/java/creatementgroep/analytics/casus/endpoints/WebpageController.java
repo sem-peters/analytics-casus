@@ -23,8 +23,13 @@ private final WebpageService webpageService;
 		return "webpages";
 	}
 
-	@PostMapping("/webpages")
-		public void createNewWebsite(@RequestBody NewWebsiteData newWebsiteData){
-		webpageService.save(newWebsiteData);
-	}
+//	@PostMapping("/form")
+//		public void createNewWebsite(@RequestBody NewWebsiteData newWebsiteData){
+//		webpageService.save(newWebsiteData);
+//	}
+
+
+
+
+
 }

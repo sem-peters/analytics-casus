@@ -9,17 +9,35 @@
 </head>
 <body>
 
-<div align="center">
-    <h1>Add your new website here!</h1>
+<!--<div align="center">-->
+<!--    <h1>Add your new website here!</h1>-->
 
-    <p>
-        <label required for="name">Website</label><input id="name">
-        <label for="url">Optional URL</label><input id="url">
-        <button id="submitButton">Submit</button>
-    </p>
+<!--&lt;!&ndash;    <p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <label required for="name">Website</label><input id="name">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="url">Optional URL</label><input id="url">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button id="submitButton">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </p>&ndash;&gt;-->
+
+<!--    <form action="#" th:action="@{/webpages}" th:object="${newWebsiteData}" method="post">-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td>Website</td>-->
+<!--                <td><input required type="text" th:field="*{name}" /></td>-->
+<!--                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>URL</td>-->
+<!--                <td><input type="text" th:field="*{url}" /></td>-->
+<!--                <td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">URL Error</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><button id="submitButton" type="submit">Submit</button></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
 
 
-</div>
+<!--</div>-->
 <table class="tabel">
     <thead>
     <tr>
@@ -50,6 +68,7 @@
         <input type="submit" value="Sign Out">
     </form>
 </div>
+<li><a href="/form">Add new website</a></li>
 
 <script language="javascript">
 function submitForm() {

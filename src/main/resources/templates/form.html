@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>Webpagina-analysemodel</title>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Add your new website here!</h1>
+
+
+    <form action="#" th:action="@{/form}" th:object="${newWebsiteData}" method="post">
+        <table>
+            <tr>
+                <td>Website</td>
+                <td><input required type="text" th:field="*{name}" /></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            </tr>
+            <tr>
+                <td>URL</td>
+                <td><input type="text" th:field="*{url}" /></td>
+                <td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">URL Error</td>
+            </tr>
+            <tr>
+                <td><button id="submitButton" type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+
+</div>
+</body>
+</html>
