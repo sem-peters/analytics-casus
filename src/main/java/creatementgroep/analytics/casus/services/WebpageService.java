@@ -1,6 +1,7 @@
 package creatementgroep.analytics.casus.services;
 
 import creatementgroep.analytics.casus.domain.NewWebsiteData;
+import creatementgroep.analytics.casus.domain.User;
 import creatementgroep.analytics.casus.domain.WebpageRepository;
 import creatementgroep.analytics.casus.domain.Website;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,11 @@ public class WebpageService {
 		return webpageRepository.findByTrackingId(UUID.fromString(trackingId));
 	}
 
-	public List<Website> findAll() {
-		return webpageRepository.findAll();
+	public List<Website> findAllByUser(User user) {
+		return webpageRepository.findByUsersContaining(user);
 	}
+
+
 
 	public Website findById(Long id) {
 		return webpageRepository.getById(id);
@@ -34,6 +37,7 @@ public class WebpageService {
 		} else {
 			website = new Website(newWebsiteData.getName(), UUID.randomUUID());
 		}
+
 		webpageRepository.save(website);
 	}
 
