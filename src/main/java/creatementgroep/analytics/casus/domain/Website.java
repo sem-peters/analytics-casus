@@ -32,6 +32,8 @@ public class Website {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "page")
     private List<PageVisit> pageVisits = List.of();
 
+    private List<User> userList;
+
     public Website(String name, UUID trackingId) {
         this.name = name;
         this.trackingId = trackingId;

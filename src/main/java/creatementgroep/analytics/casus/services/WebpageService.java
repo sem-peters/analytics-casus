@@ -1,6 +1,7 @@
 package creatementgroep.analytics.casus.services;
 
 import creatementgroep.analytics.casus.domain.NewWebsiteData;
+import creatementgroep.analytics.casus.domain.User;
 import creatementgroep.analytics.casus.domain.WebpageRepository;
 import creatementgroep.analytics.casus.domain.Website;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,10 @@ public class WebpageService {
 
 	public List<Website> findAll() {
 		return webpageRepository.findAll();
+	}
+
+	public List<Website> findAllByUserId(Long userId){
+		return webpageRepository.findAllByUserId(userId);
 	}
 
 	public Website findById(Long id) {
