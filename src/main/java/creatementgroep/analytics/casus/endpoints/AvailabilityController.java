@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,6 @@ public class AvailabilityController {
 	public List<Website> webpages(){
 		RestTemplate restTemplate = new RestTemplate();
 		for (Website website : webpageService.findAllByUrl()) {
-			System.out.println(website.getLastChecked());
 			try {ResponseEntity<String> response
 					= restTemplate.getForEntity(website.getUrl(), String.class);
 				website.setStatus("UP");
@@ -36,10 +36,8 @@ public class AvailabilityController {
 			}
 			website.setLastChecked(LocalDateTime.now());
 		}
-
+		System.out.printf("Check completed @ %s\n", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 		return webpageService.findAllByUrl();
 	}
-
-
 
 }
