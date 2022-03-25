@@ -3,6 +3,7 @@ package creatementgroep.analytics.casus.endpoints;
 import creatementgroep.analytics.casus.domain.Website;
 import creatementgroep.analytics.casus.services.WebpageService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.ui.Model;
@@ -19,24 +20,13 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@Slf4j
 public class AvailabilityController {
 
 	WebpageService webpageService;
 
 	@GetMapping("/availability")
-	@Scheduled(fixedRate = 5000)
 	public List<Website> webpages(){
-		RestTemplate restTemplate = new RestTemplate();
-		for (Website website : webpageService.findAllByUrl()) {
-			try {ResponseEntity<String> response
-					= restTemplate.getForEntity(website.getUrl(), String.class);
-				website.setStatus("UP");
-			} catch (RestClientException e) {
-				website.setStatus("DOWN");
-			}
-			website.setLastChecked(LocalDateTime.now());
-		}
-		System.out.printf("Check completed @ %s\n", LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
 		return webpageService.findAllByUrl();
 	}
 

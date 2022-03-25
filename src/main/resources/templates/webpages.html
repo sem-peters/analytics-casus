@@ -8,36 +8,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-
-<!--<div align="center">-->
-<!--    <h1>Add your new website here!</h1>-->
-
-<!--&lt;!&ndash;    <p>&ndash;&gt;-->
-<!--&lt;!&ndash;        <label required for="name">Website</label><input id="name">&ndash;&gt;-->
-<!--&lt;!&ndash;        <label for="url">Optional URL</label><input id="url">&ndash;&gt;-->
-<!--&lt;!&ndash;        <button id="submitButton">Submit</button>&ndash;&gt;-->
-<!--&lt;!&ndash;    </p>&ndash;&gt;-->
-
-<!--    <form action="#" th:action="@{/webpages}" th:object="${newWebsiteData}" method="post">-->
-<!--        <table>-->
-<!--            <tr>-->
-<!--                <td>Website</td>-->
-<!--                <td><input required type="text" th:field="*{name}" /></td>-->
-<!--                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>URL</td>-->
-<!--                <td><input type="text" th:field="*{url}" /></td>-->
-<!--                <td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">URL Error</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td><button id="submitButton" type="submit">Submit</button></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </form>-->
+<h1>Add your new website here!</h1>
 
 
-<!--</div>-->
+<form action="#" th:action="@{/webpages}" th:object="${newWebsiteData}" method="post">
+    <table>
+        <tr>
+            <td>Website</td>
+            <td><input required type="text" th:field="*{name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td><input type="text" th:field="*{url}" /></td>
+            <td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">URL Error</td>
+        </tr>
+        <tr>
+            <td><button id="submitButton" type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
 <table class="tabel">
     <thead>
     <tr>
@@ -68,40 +58,6 @@
         <input type="submit" value="Sign Out">
     </form>
 </div>
-<li><a href="/form">Add new website</a></li>
-
-<script language="javascript">
-function submitForm() {
-// Create an object that matches the structure of NewUserData
-    let newWebsiteData = {
-        name: document.getElementById('name').value,
-        url: document.getElementById('url').value
-     };
-    console.log('Sending', newWebsiteData);
-// Build an HTTP request ( the hard way )
-// In a front-end framework, there are easier ways to
-// do this
-
-   let xhr = new XMLHttpRequest();
-    xhr.open('POST', '/webpages');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.addEventListener('load', () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            alert('The website was created');
-             location.href = 'http://localhost:8080/webpages';
-        } else {
-            alert('Website is not created');
-            location.href = 'http://localhost:8080/index.html';
-        }
-
-
-    });
-    xhr.send(JSON.stringify(newWebsiteData));
-
-
-}
-document.getElementById('submitButton').addEventListener('click', submitForm);
-</script>
 
 </body>
 </html>
