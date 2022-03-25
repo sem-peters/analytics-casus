@@ -11,9 +11,11 @@ import java.util.UUID;
 public interface WebpageRepository extends JpaRepository<Website, Long> {
 
 	Website findByTrackingId(UUID trackingId);
+	List<Website> findByUsersContaining(User user);
 
 	@Query("SELECT w FROM Website w WHERE w.url <> '' AND w.url IS NOT NULL")
 	List<Website> findAllByUrl();
 
 
 }
+

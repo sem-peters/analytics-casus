@@ -31,6 +31,11 @@ public class Website {
     @Column(name="trackingId")
     private UUID trackingId;
 
+    @ManyToMany
+    @JoinTable
+    @JsonIgnore
+    private List<User> users;
+
     @Column
     private String url;
 
@@ -44,14 +49,10 @@ public class Website {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "page")
     private List<PageVisit> pageVisits = List.of();
 
-    public Website(String name, UUID trackingId) {
-        this.name = name;
-        this.trackingId = trackingId;
-    }
-
-    public Website(String name, UUID trackingId, String url) {
+    public Website(String name, UUID trackingId, String url, User user) {
         this.name = name;
         this.trackingId = trackingId;
         this.url = url;
+        this.users = List.of(user);
     }
 }
