@@ -8,7 +8,6 @@ import org.apache.commons.csv.CSVPrinter;
 import org.springframework.stereotype.Service;
 import ua_parser.Client;
 import ua_parser.Parser;
-import ua_parser.UserAgent;
 
 import java.io.IOException;
 import java.io.Writer;

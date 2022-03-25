@@ -4,15 +4,11 @@ import creatementgroep.analytics.casus.domain.PageVisit;
 import creatementgroep.analytics.casus.domain.Website;
 import creatementgroep.analytics.casus.services.AnalyticsPageService;
 import creatementgroep.analytics.casus.services.WebpageService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ua_parser.Client;
-import ua_parser.Parser;
-import ua_parser.UserAgent;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

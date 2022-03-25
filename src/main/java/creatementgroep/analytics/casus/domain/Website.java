@@ -3,10 +3,14 @@ package creatementgroep.analytics.casus.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+
+
 
 @NoArgsConstructor
 @Getter
@@ -20,7 +24,7 @@ public class Website {
     @SequenceGenerator(name="website_generator", sequenceName = "website_seq")
     private Long id;
 
-
+    @NotBlank
     @Column(name="websitenaam", unique = true)
     private String name;
 

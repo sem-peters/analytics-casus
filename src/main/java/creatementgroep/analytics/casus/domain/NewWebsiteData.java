@@ -1,10 +1,7 @@
 package creatementgroep.analytics.casus.domain;
 
 import lombok.*;
-
-import javax.persistence.Column;
-import java.util.UUID;
-
+import org.hibernate.validator.constraints.URL;
 
 
 @NoArgsConstructor
@@ -13,6 +10,16 @@ import java.util.UUID;
 @Setter
 public class NewWebsiteData {
 
+
 	private String name;
+	@URL
 	private String url;
+
+	@Override
+	public String toString() {
+		return "NewWebsiteData{" +
+				"name='" + name + '\'' +
+				", url='" + url + '\'' +
+				'}';
+	}
 }
