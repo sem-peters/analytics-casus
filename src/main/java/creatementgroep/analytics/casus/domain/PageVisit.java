@@ -1,16 +1,17 @@
 package creatementgroep.analytics.casus.domain;
 
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
+import java.util.Objects;
 
 @Entity
 @Table(name="analytics")
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class PageVisit {
 
 	@Id
@@ -43,5 +44,18 @@ public class PageVisit {
 				", operatingSystem='" + operatingSystem + '\'' +
 				", internetProtocol='" + internetProtocol + '\'' +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+		PageVisit pageVisit = (PageVisit) o;
+		return id != null && Objects.equals(id, pageVisit.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return getClass().hashCode();
 	}
 }

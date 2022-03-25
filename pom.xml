@@ -55,12 +55,6 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.jetbrains</groupId>
-			<artifactId>annotations</artifactId>
-			<version>RELEASE</version>
-			<scope>compile</scope>
-     </dependency>
-		<dependency>
 			<groupId>com.github.ua-parser</groupId>
 			<artifactId>uap-java</artifactId>
 			<version>1.5.2</version>
