@@ -8,8 +8,8 @@
 <div>
 
     <p>
-        <label for="name">Website</label>
-        <input id="name">
+        <label required for="name">Website</label><input id="name">
+        <label for="url">Optional URL</label><input id="url">
         <button id="submitButton">Submit</button>
     </p>
 
@@ -23,6 +23,7 @@ function submitForm() {
 // Create an object that matches the structure of NewUserData
     let newWebsiteData = {
         name: document.getElementById('name').value,
+        url: document.getElementById('url').value
      };
     console.log('Sending', newWebsiteData);
 // Build an HTTP request ( the hard way )

@@ -28,8 +28,17 @@ public class WebpageService {
 	}
 
 	public void save(NewWebsiteData newWebsiteData) {
-		Website website = new Website(newWebsiteData.getName(), UUID.randomUUID());
+		Website website;
+		if(newWebsiteData.getUrl() != null) {
+			website = new Website(newWebsiteData.getName(), UUID.randomUUID(), newWebsiteData.getUrl());
+		} else {
+			website = new Website(newWebsiteData.getName(), UUID.randomUUID());
+		}
 		webpageRepository.save(website);
+	}
+
+	public List<Website> findAllByUrl() {
+		return webpageRepository.findAllByUrl();
 	}
 
 }
