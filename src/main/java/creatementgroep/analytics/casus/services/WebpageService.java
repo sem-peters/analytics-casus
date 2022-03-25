@@ -20,20 +20,18 @@ public class WebpageService {
 		return webpageRepository.findByTrackingId(UUID.fromString(trackingId));
 	}
 
-	public List<Website> findAll() {
-		return webpageRepository.findAll();
+	public List<Website> findAllByUser(User user) {
+		return webpageRepository.findByUsersContaining(user);
 	}
 
-	public List<Website> findAllByUserId(Long userId){
-		return webpageRepository.findAllByUserId(userId);
-	}
+
 
 	public Website findById(Long id) {
 		return webpageRepository.getById(id);
 	}
 
-	public void save(NewWebsiteData newWebsiteData) {
-		Website website = new Website(newWebsiteData.getName(), UUID.randomUUID());
+	public void save(NewWebsiteData newWebsiteData, User user) {
+		Website website = new Website(newWebsiteData.getName(), UUID.randomUUID(),user );
 		webpageRepository.save(website);
 	}
 

@@ -1,6 +1,8 @@
 package creatementgroep.analytics.casus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Data
+@ToString
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "user_generator")
@@ -19,13 +22,14 @@ public class User implements UserDetails {
     private Long id;
     private String username;
     private String password;
-//    private List<Website> websiteList;
-    @Enumerated(EnumType.STRING)
-    private UserRole userRole;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "users")
+    private List<Website> websiteList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.getName());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
         return Collections.singleton(authority);
     }
 

@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface WebpageRepository extends JpaRepository<Website, Long> {
 
 	Website findByTrackingId(UUID trackingId);
+	List<Website> findByUsersContaining(User user);
 
-	List<Website> findAllByUserId(Long id);
 }
 
