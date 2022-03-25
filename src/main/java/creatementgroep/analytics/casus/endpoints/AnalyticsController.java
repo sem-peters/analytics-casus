@@ -5,6 +5,7 @@ import creatementgroep.analytics.casus.domain.Website;
 import creatementgroep.analytics.casus.services.AnalyticsPageService;
 import creatementgroep.analytics.casus.services.WebpageService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +20,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AnalyticsController {
 
-    private AnalyticsPageService analyticsPageService;
-    private WebpageService webpageService;
+    private final AnalyticsPageService analyticsPageService;
+    private final WebpageService webpageService;
 
     @GetMapping("/analytics")
     public String pageVisits (@RequestParam Long id,Model model) {

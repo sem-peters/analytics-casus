@@ -1,11 +1,22 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
-    <link rel="stylesheet" href="styles.css">
     <title>Webpagina-analysemodel</title>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
+<div align="center">
+    <h1>Add your new website here!</h1>
+
+    <p><label for="name">Website</label>
+        <input id="name"></p>
+
+    <button id="submitButton">Submit</button>
+</div>
 <table class="tabel">
     <thead>
     <tr>
@@ -30,5 +41,50 @@
     </tr>
     </tbody>
 </table>
+
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out">
+    </form>
+</div>
+
+
+<script language="javascript">
+function submitForm() {
+// Create an object that matches the structure of NewUserData
+    let newWebsiteData = {
+        name: document.getElementById('name').value,
+     };
+    console.log('Sending', newWebsiteData);
+// Build an HTTP request ( the hard way )
+// In a front-end framework, there are easier ways to
+// do this
+
+   let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/webpages');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.addEventListener('load', () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert('The website was created');
+             location.href = 'http://localhost:8080/webpages';
+        } else {
+            alert('Website is not created');
+            location.href = 'http://localhost:8080/index';
+        }
+
+
+    });
+    xhr.send(JSON.stringify(newWebsiteData));
+
+
+
+
+
+
+
+}
+document.getElementById('submitButton').addEventListener('click', submitForm);
+
+</script>
 </body>
 </html>

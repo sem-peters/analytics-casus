@@ -10,9 +10,7 @@ import java.util.UUID;
 @Entity
 @Table(name="analytics")
 @NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
 public class PageVisit {
 
 	@Id
@@ -34,7 +32,6 @@ public class PageVisit {
 		this.timestamp = timestamp;
 		this.page = page;
 	}
-
 
 	@Override
 	public String toString() {

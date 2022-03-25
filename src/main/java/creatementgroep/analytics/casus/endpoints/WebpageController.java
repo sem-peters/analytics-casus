@@ -3,6 +3,7 @@ package creatementgroep.analytics.casus.endpoints;
 import creatementgroep.analytics.casus.domain.*;
 import creatementgroep.analytics.casus.services.WebpageService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class WebpageController {
 
-private WebpageService webpageService;
+private final WebpageService webpageService;
 
 	@GetMapping("/webpages")
 	public String webpages( Model model){
